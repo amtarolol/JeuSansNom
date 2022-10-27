@@ -4,28 +4,23 @@
 
 #include "SFML/Graphics.hpp"
 
-
-#ifndef C___PROJECTILES_H
-#define C___PROJECTILES_H
+#pragma once
 
 
-/*class Projectiles: public sf::CircleShape {
+class Projectiles{
 
 public:
-    Projectiles(sf::Vector2f origine, sf::Vector2i mouseLocation, sf::Time lifeTime);
+    Projectiles(sf::Vector2f origine, sf::Vector2f mouseLocation, float lifeTime);
     ~Projectiles();
 
-    int mouvement(sf::Time clock);
+    int mouvement(float clock);
+    sf::CircleShape getProjectile() const;
 
-    virtual sf::Vector2f getPoint(std::size_t index) const;
-
-    virtual std::size_t getPointCount() const;
 
 private:
     sf::Vector2f velocity;
-    sf::Time lifetime;
-
+    float accel = 300.f;
+    float lifetime;
+    sf::CircleShape proj;
 };
 
-*/
-#endif //C___PROJECTILES_H

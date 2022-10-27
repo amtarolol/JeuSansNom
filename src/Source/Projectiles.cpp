@@ -5,41 +5,41 @@
 #include "../Header/Projectiles.h"
 #include <ctgmath>
 
-/*Projectiles::Projectiles(sf::Vector2f origine, sf::Vector2i mouseLocation, sf::Time lifeTime) {
-    this->setFillColor(sf::Color::Red);
-    this->setOrigin(origine);
-    this->setPosition(origine);
-    this->setRadius(2.f);
+Projectiles::Projectiles(sf::Vector2f origine, sf::Vector2f mouseLocation, float lifeTime) {
 
-    sf::Vector2f distance(mouseLocation.x - origine.x, mouseLocation.y - origine.x);
-    float norme = std::sqrt(powf(distance.x, 2) + powf(distance.y, 2));
-    sf::Vector2f direction(distance.x / norme, distance.y / norme);
+    proj = sf::CircleShape(1.f, 1000);
+    proj.setFillColor(sf::Color::Red);
+    proj.setOrigin(1.f/2.f, 1.f/2.f);
+    proj.setPosition(origine);
 
-    sf::Vector2f velo(direction.x * 1, direction.y * 1);
+    sf::Vector2f distance(mouseLocation.x - origine.x, mouseLocation.y - origine.y);
+    float norme = std::sqrt(distance.x * distance.x + distance.y * distance.y);
+    sf::Vector2f direction(distance/norme);
+
+    sf::Vector2f velo(direction * accel);
+
 
     this->velocity = velo;
     this->lifetime = lifeTime;
 
-    update();
-
 }
 
-int Projectiles::mouvement(sf::Time clock) {
+int Projectiles::mouvement(float clock) {
 
-    this->lifetime -= clock;
+    lifetime -= clock;
 
-    if (this->lifetime <= sf::Time::Zero){
+    if (lifetime <= 0){
         return 1;
     }
-    move(velocity * clock.asSeconds());
-
+    //proj.setPosition(proj.getPosition() +sf::Vector2f(velocity));
+    proj.move(velocity * clock);
     return 0;
 }
 
-sf::Vector2f Projectiles::getPoint(std::size_t index) const {
-    return this->getPosition();
+
+sf::CircleShape Projectiles::getProjectile() const {
+    return proj;
 }
 
-std::size_t Projectiles::getPointCount() const {
-    return 30;
-}*/
+Projectiles::~Projectiles() = default;
+

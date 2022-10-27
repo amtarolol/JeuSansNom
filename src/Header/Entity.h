@@ -4,11 +4,10 @@
 
 #include <SFML/Graphics.hpp>
 
-#ifndef C___ENTITY_H
-#define C___ENTITY_H
+#pragma once
 
 
-class Entity {
+class Entity : public sf::Shape {
 
 public:
     Entity(sf::Vector2f position);
@@ -22,4 +21,3 @@ private:
 };
 
 
-#endif //C___ENTITY_H

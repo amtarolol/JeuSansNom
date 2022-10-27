@@ -5,9 +5,10 @@
 #include "SFML/Graphics.hpp"
 #include "Player.h"
 #include "../Source/SystemProjectile.cpp"
+#include <iostream>
+#include <memory>
 
-#ifndef C___GAME_H
-#define C___GAME_H
+#pragma once
 
 
 class Game {
@@ -30,12 +31,12 @@ private:
 
 
 
-    sf::RenderWindow* window;
-    Player* player;
-    //SystemProjectile* projs;
-    int limiteProj;
+    //sf::RenderWindow *window;
+    std::unique_ptr<sf::RenderWindow> window;
+    //std::shared_ptr<SystemProjectiles> system;
+    SystemProjectiles* system;
+    std::unique_ptr<Player> player;
+    std::unique_ptr<Projectiles> proj;
 
 };
 
-
-#endif //C___GAME_H

@@ -2,6 +2,8 @@
 // Created by amtarolol on 10/10/22.
 //
 
+#include <utility>
+
 #include "../Header/Player.h"
 
 
@@ -14,13 +16,18 @@ Player::Player(sf::Vector2f size) {
 }
 
 
-
-
 Player::~Player() {}
 
-void Player::mouvement() {
 
-    sf::Vector2f accel(0,0);
+void Player::update() {
+
+    //mouvement();
+
+
+}
+
+
+void Player::mouvement(sf::Vector2f mouse) {
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
         player.move(-acceleration, 0.f);
@@ -44,11 +51,19 @@ void Player::mouvement() {
         player.rotate(30.f);
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        system->addProjectile(player.getPosition(), mouse);
+    }
 }
 
 
 sf::RectangleShape Player::getPlayer() {
     return player;
+}
+
+
+void Player::setSystemProjectile(SystemProjectiles* nouvSystem) {
+    system = nouvSystem;
 }
 
 

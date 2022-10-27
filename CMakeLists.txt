@@ -7,7 +7,7 @@ add_executable(C__ src/main.cpp
         src/Source/Player.cpp
         src/Header/Player.h
         src/Source/Entity.cpp
-        src/Header/Entity.h src/Source/SystemProjectile.cpp src/Source/Game.cpp src/Header/Game.h src/Source/Projectiles.cpp src/Header/Projectiles.h)
+        src/Header/Entity.h src/Source/SystemProjectile.cpp src/Source/Game.cpp src/Header/Game.h src/Source/Projectiles.cpp src/Header/Projectiles.h src/Source/SystemProjectiles.cpp src/Header/SystemProjectiles.h)
 
 
 
@@ -22,6 +22,6 @@ endif()
 
 
 # Install target
-install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
+#install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 
 
