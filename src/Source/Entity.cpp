@@ -2,22 +2,15 @@
 // Created by amtarolol on 22/10/22.
 //
 
+
+#include <iostream>
 #include "../Header/Entity.h"
 
+void Entity::mouvement() {
+}
 
-Entity::Entity(sf::Vector2f position) {
-
-    this->position = position;
+void Entity::MyUpdate() {
 
 }
 
 
-void Entity::update(sf::Time clock) {
-
-
-
-
-}
-
-
-void Entity::mouvement() {}

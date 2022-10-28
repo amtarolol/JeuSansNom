@@ -9,29 +9,18 @@
 
 #pragma once
 
-class Player{
+class Player : public Entity{
 
 public:
-    Player(sf::Vector2f size);
-    ~Player();
+    Player(sf::Vector2f position);
+    ~Player() override;
     void mouvement(sf::Vector2f mouse);
-    void update();
-    void setSystemProjectile(SystemProjectiles* nouvSystem);
-    sf::RectangleShape getPlayer();
 
+    void MyUpdate() override;
+    void setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem);
 
 private:
-    float pv = 100.f;
-    float acceleration = 2.f;
-
-    constexpr static const float FRIC = -0.5f;
-
-    sf::Vector2f velo = sf::Vector2f (0,0);
-    sf::RectangleShape player;
-    //SystemProjectiles projs;
-    int limiteProj;
-    //std::shared_ptr<SystemProjectiles> system;
-    SystemProjectiles* system;
+    std::shared_ptr<SystemProjectiles> system;
 
 };
 

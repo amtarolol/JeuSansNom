@@ -3,20 +3,21 @@
 //
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 #pragma once
 
 
-class Entity : public sf::Shape {
+class Entity : public sf::RectangleShape {
 
 public:
-    Entity(sf::Vector2f position);
-    void mouvement();
-    void update(sf::Time clock);
 
-private:
-    sf::Vector2f position;
-    sf::Vector2f velocite;
+    virtual void mouvement();
+    virtual void MyUpdate();
+
+protected:
+    float pv = 1.f;
+    float vitesse = 1.f;
 
 };
 

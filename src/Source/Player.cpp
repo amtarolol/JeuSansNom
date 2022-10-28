@@ -7,22 +7,23 @@
 #include "../Header/Player.h"
 
 
-Player::Player(sf::Vector2f size) {
+Player::Player(sf::Vector2f position) {
 
-    player = sf::RectangleShape(size);
-    player.setFillColor(sf::Color::Green);
-    player.setOrigin(size.x/2, size.y/2);
-    //player.setPosition(100,100);
+    pv = 100.f;
+    vitesse = 2.f;
+
+    setSize(sf::Vector2f(10.f, 10.f));
+    setFillColor(sf::Color::Green);
+    setOrigin(getSize().x/2, getSize().y/2);
+    setPosition(position);
 }
 
 
-Player::~Player() {}
+Player::~Player() = default;
 
 
-void Player::update() {
-
+void Player::MyUpdate() {
     //mouvement();
-
 
 }
 
@@ -30,39 +31,33 @@ void Player::update() {
 void Player::mouvement(sf::Vector2f mouse) {
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-        player.move(-acceleration, 0.f);
+        move(-vitesse, 0.f);
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-        player.move(acceleration, 0.f);
-
+        move(vitesse, 0.f);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-        player.move(0.f, -acceleration);
+        move(0.f, -vitesse);
 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-        player.move(0.f, acceleration);
+        move(0.f, vitesse);
     }
 
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-        player.rotate(30.f);
+        rotate(30.f);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        system->addProjectile(player.getPosition(), mouse);
+        system->addProjectile(getPosition(), mouse);
     }
 }
 
 
-sf::RectangleShape Player::getPlayer() {
-    return player;
-}
-
-
-void Player::setSystemProjectile(SystemProjectiles* nouvSystem) {
+void Player::setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem) {
     system = nouvSystem;
 }
 

@@ -6,8 +6,8 @@
 
 void Game::initVariable() {
 
-    player = std::make_unique<Player>(sf::Vector2f (10,10));
-    system = new SystemProjectiles();
+    player = std::make_shared<Player>(sf::Vector2f (width/2,height/2));
+    system = std::make_shared<SystemProjectiles>();
 
     player->setSystemProjectile(system);
     //proj = std::make_unique<Projectiles>(sf::Vector2f(100,100), sf::Vector2i(110,110), sf::seconds(2.f));
@@ -15,9 +15,11 @@ void Game::initVariable() {
     int limiteProj = 5;
 }
 
+
+
 void Game::initThread() {
 
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(500,300), "SFML WINDOW");
+    window = std::make_unique<sf::RenderWindow>(sf::VideoMode((unsigned int)width,(unsigned int)height), "SFML WINDOW");
     window->setFramerateLimit(60);
 }
 
@@ -35,6 +37,7 @@ int Game::jouer() {
 
         // show the actual game
         show();
+        compteurfps++;
     }
     return 0;
 }
@@ -52,11 +55,20 @@ void Game::events() {
 void Game::update() {
 
     events();
-    sf::Vector2f mouse = sf::Vector2f (sf::Mouse::getPosition(*window));
+    sf::Vector2f mouse(sf::Mouse::getPosition(*window));
     player->mouvement(mouse);
 
     float fps = 1.f/60.f;
     system->update(fps);
+
+
+    if (compteurfps %60 == 0){
+        entites.push_back(std::make_unique<Ennemy>(sf::Vector2f(width-200, height/2), player));
+    }
+
+    for (auto & entite : entites){
+        entite->mouvement();
+    }
 
 }
 
@@ -71,7 +83,13 @@ void Game::show() {
     //window->draw(proj->getProjectile());
 
     window->draw(*system);
-    window->draw(player->getPlayer());
+    window->draw(*player);
+
+
+    // ennemies
+    for (auto &creature : entites){
+        window->draw(*creature);
+    }
 
     window->display();
 }
@@ -82,8 +100,7 @@ void Game::setLimiteProj(int nouvLimite){
 
 }
 
-Game::~Game() {
-}
+Game::~Game() = default;
 
 
 
