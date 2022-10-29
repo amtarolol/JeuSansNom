@@ -10,7 +10,6 @@ add_executable(C__ src/main.cpp
         src/Header/Entity.h src/Source/Game.cpp src/Header/Game.h src/Source/Projectiles.cpp src/Header/Projectiles.h src/Source/SystemProjectiles.cpp src/Header/SystemProjectiles.h src/Source/Ennemy.cpp src/Header/Ennemy.h)
 
 
-
 set(SFML_DIR "/home/amtarolol/Bureau/SFML-2.5.1/lib/cmake/SFML")
 find_package(SFML 2.5 COMPONENTS network audio graphics window system REQUIRED)
 if(SFML_FOUND)
@@ -21,7 +20,13 @@ if(SFML_FOUND)
 endif()
 
 
-# Install target
-#install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
+# pour openGL
+find_package(X11 REQUIRED)
+include_directories(${X11_INCLUDE_DIR})
+link_directories(${X11_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${X11_LIBRARIES})
+
+
+
 
 

@@ -15,6 +15,8 @@ public:
     virtual void mouvement();
     virtual void MyUpdate();
 
+    virtual float getPv();
+
 protected:
     float pv = 1.f;
     float vitesse = 1.f;

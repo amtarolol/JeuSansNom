@@ -9,8 +9,11 @@
 
 Player::Player(sf::Vector2f position) {
 
+    // variables protected de la classe Entity
     pv = 100.f;
     vitesse = 2.f;
+    //
+
 
     setSize(sf::Vector2f(10.f, 10.f));
     setFillColor(sf::Color::Green);

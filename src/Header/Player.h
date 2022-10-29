@@ -19,6 +19,7 @@ public:
     void MyUpdate() override;
     void setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem);
 
+
 private:
     std::shared_ptr<SystemProjectiles> system;
 

@@ -10,23 +10,53 @@ void Game::initVariable() {
     system = std::make_shared<SystemProjectiles>();
 
     player->setSystemProjectile(system);
-    //proj = std::make_unique<Projectiles>(sf::Vector2f(100,100), sf::Vector2i(110,110), sf::seconds(2.f));
-    //projs = projs();
-    int limiteProj = 5;
+
 }
 
 
 
-void Game::initThread() {
+void Game::initWindow() {
 
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode((unsigned int)width,(unsigned int)height), "SFML WINDOW");
+    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(width, height), "SFML WINDOW");
+
     window->setFramerateLimit(60);
 }
 
-Game::Game() {
-    initVariable();
-    initThread();
+
+void Game::initGui() {
+
+
+
+
+
 }
+
+
+
+void Game::getScreenSize() {
+
+    Display* disp = XOpenDisplay(NULL);
+    Screen*  scrn = DefaultScreenOfDisplay(disp);
+    height = scrn->height;
+    width  = scrn->width;
+
+}
+
+Game::Game() {
+
+    // récupération de la taille de l'écran pour l'affichage
+    getScreenSize();
+
+    // initialisation de toutes les variables sauf pour le window
+    initVariable();
+
+    // initialisation de la fenêtre de jeu
+    initWindow();
+}
+
+Game::~Game() = default;
+
+
 
 int Game::jouer() {
 
@@ -100,7 +130,6 @@ void Game::setLimiteProj(int nouvLimite){
 
 }
 
-Game::~Game() = default;
 
 
 

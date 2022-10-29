@@ -13,4 +13,8 @@ void Entity::MyUpdate() {
 
 }
 
+float Entity::getPv() {
+    return pv;
+}
+
 

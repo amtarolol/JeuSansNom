@@ -9,6 +9,7 @@
 #include "SystemProjectiles.h"
 #include <iostream>
 #include <memory>
+#include "X11/Xlib.h"
 
 #pragma once
 
@@ -29,7 +30,11 @@ private:
     void show();
 
     void initVariable();
-    void initThread();
+    void initWindow();
+    void initGui();
+
+
+    void getScreenSize();
 
 
 
@@ -41,8 +46,8 @@ private:
     std::vector<std::unique_ptr<Entity>> entites;
 
 
-    float width = 1400.f;
-    float height = 700.f;
+    unsigned int width = 0;
+    unsigned int height = 0;
     int compteurfps = 1;
 
 
