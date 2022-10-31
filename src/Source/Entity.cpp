@@ -17,4 +17,13 @@ float Entity::getPv() {
     return pv;
 }
 
+float Entity::getPvMax() {
+    return pvMax;
+}
+
+void Entity::takeDamage(float damage) {
+    pv -= damage;
+}
+
+
 

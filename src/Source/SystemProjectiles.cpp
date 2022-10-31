@@ -45,6 +45,10 @@ std::vector<Projectiles> SystemProjectiles::getProjectiles() {
     return projectiles;
 }
 
+SystemProjectiles::~SystemProjectiles() {
+
+}
+
 
 
 

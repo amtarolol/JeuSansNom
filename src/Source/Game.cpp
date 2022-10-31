@@ -6,10 +6,15 @@
 
 void Game::initVariable() {
 
-    player = std::make_shared<Player>(sf::Vector2f (width/2,height/2));
-    system = std::make_shared<SystemProjectiles>();
+    // référence de spawn
+    spawn = std::make_unique<sf::RectangleShape>(sf::Vector2f(2.f, 2.f));
+    spawn->setPosition(width/2, height/2);
+    //
 
-    player->setSystemProjectile(system);
+    player = std::make_shared<Player>(sf::Vector2f (width/2,height/2));
+    systemProj = std::make_shared<SystemProjectiles>();
+
+    player->setSystemProjectile(systemProj);
 
 }
 
@@ -17,17 +22,22 @@ void Game::initVariable() {
 
 void Game::initWindow() {
 
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(width, height), "SFML WINDOW");
+    window = std::make_unique<sf::RenderWindow>(sf::VideoMode::getFullscreenModes()[0], "SFML WINDOW", sf::Style::Fullscreen);
 
     window->setFramerateLimit(60);
+    window->setView(*gui);
 }
 
 
 void Game::initGui() {
 
+    gui = std::make_shared<GUI>(player, width, height);
+}
 
 
+void Game::initSystemEnnemy() {
 
+    systemEnnemy = std::make_shared<SystemEnnemy>(player, gui);
 
 }
 
@@ -44,11 +54,20 @@ void Game::getScreenSize() {
 
 Game::Game() {
 
+    // cela commence à devenir le bordel
+
+
     // récupération de la taille de l'écran pour l'affichage
     getScreenSize();
 
     // initialisation de toutes les variables sauf pour le window
     initVariable();
+
+    // initialisation du gui pour l'affichage des informations en jeu
+    initGui();
+
+    // intialisation du système pour les ennemis
+    initSystemEnnemy();
 
     // initialisation de la fenêtre de jeu
     initWindow();
@@ -85,41 +104,48 @@ void Game::events() {
 void Game::update() {
 
     events();
-    sf::Vector2f mouse(sf::Mouse::getPosition(*window));
+
+    // juste pour avoir la position en pixel de la souris, qu'importe ce qu'il se passe sur l'écran pour les view et window
+    sf::Vector2i pixel = sf::Mouse::getPosition(*window);
+    sf::Vector2f mouse(window->mapPixelToCoords(pixel));
     player->mouvement(mouse);
+    //
 
     float fps = 1.f/60.f;
-    system->update(fps);
+    systemProj->update(fps);
 
 
     if (compteurfps %60 == 0){
-        entites.push_back(std::make_unique<Ennemy>(sf::Vector2f(width-200, height/2), player));
+        //entites.push_back(std::make_unique<Zombies>(sf::Vector2f(width - 200, height / 2), player));
+        systemEnnemy->generatorEnnemy();
     }
 
-    for (auto & entite : entites){
+    /*for (auto & entite : entites){
         entite->mouvement();
-    }
+    }*/
 
+    systemEnnemy->MyUpdate();
+    gui->MyUpdate();
+    window->setView(*gui);
 }
 
 void Game::show() {
 
     window->clear();
 
-    // draw
-    /*for (int i = 0; i!= system->getProjectiles().size(); ++i){
-        window->draw(system->getProjectiles()[i].getProjectile());
-    }*/
-    //window->draw(proj->getProjectile());
+    window->draw(*spawn); // juste une référence pour savoir le spawn (centre de la map)
 
-    window->draw(*system);
+
+    window->draw(*systemProj);
+    window->draw(*systemEnnemy);
     window->draw(*player);
-
 
     // ennemies
     for (auto &creature : entites){
         window->draw(*creature);
     }
+
+    window->draw(*gui);
 
     window->display();
 }
@@ -129,6 +155,7 @@ void Game::setLimiteProj(int nouvLimite){
 
 
 }
+
 
 
 

@@ -5,8 +5,13 @@
 #include "SFML/Graphics.hpp"
 #include "Entity.h"
 #include "Player.h"
-#include "Ennemy.h"
+#include "Ennemies/Zombies.h"
 #include "SystemProjectiles.h"
+#include "SystemEnnemy.h"
+#include "GUI.h"
+
+
+
 #include <iostream>
 #include <memory>
 #include "X11/Xlib.h"
@@ -32,6 +37,7 @@ private:
     void initVariable();
     void initWindow();
     void initGui();
+    void initSystemEnnemy();
 
 
     void getScreenSize();
@@ -39,9 +45,12 @@ private:
 
 
     std::unique_ptr<sf::RenderWindow> window;
-    std::shared_ptr<SystemProjectiles> system;
+    std::shared_ptr<GUI> gui;
+    std::shared_ptr<SystemProjectiles> systemProj;
     std::shared_ptr<Player> player;
-    std::unique_ptr<Projectiles> proj;
+    std::shared_ptr<SystemEnnemy> systemEnnemy;
+
+    std::unique_ptr<sf::RectangleShape> spawn; // inutile, juste là pour avoir une référence
 
     std::vector<std::unique_ptr<Entity>> entites;
 

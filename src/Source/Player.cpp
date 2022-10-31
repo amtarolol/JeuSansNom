@@ -12,6 +12,7 @@ Player::Player(sf::Vector2f position) {
     // variables protected de la classe Entity
     pv = 100.f;
     vitesse = 2.f;
+    pvMax = 100.f;
     //
 
 
@@ -63,5 +64,6 @@ void Player::mouvement(sf::Vector2f mouse) {
 void Player::setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem) {
     system = nouvSystem;
 }
+
 
 

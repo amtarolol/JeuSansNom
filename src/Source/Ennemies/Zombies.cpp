@@ -4,32 +4,32 @@
 
 #include <ctgmath>
 #include <iostream>
-#include "../Header/Ennemy.h"
+#include "../../Header/Ennemies/Zombies.h"
 
 
-Ennemy::Ennemy(sf::Vector2f position, std::shared_ptr<Entity> target){
+Zombies::Zombies(sf::Vector2f position, std::shared_ptr<Entity> target){
 
     pv = 100.f;
     vitesse = 1.5f;
 
-    setSize(sf::Vector2f(5.f, 5.f));
+    setSize(sf::Vector2f(taille, taille));
     setFillColor(sf::Color::Yellow);
     setOrigin(getSize().x/2, getSize().y/2);
     setPosition(position);
 
-    setTarget(target);
+    setTarget(target); // cible du zombie où il va aller
 
 }
 
-Ennemy::~Ennemy() = default;
+Zombies::~Zombies() = default;
 
-void Ennemy::setTarget(std::shared_ptr<Entity> nouvTarget) {
+void Zombies::setTarget(std::shared_ptr<Entity> nouvTarget) {
 
     target = nouvTarget;
 
 }
 
-void Ennemy::mouvement() {
+void Zombies::mouvement() {
 
     sf::Vector2f targetPos = target->getPosition();
     sf::Vector2f myPos = getPosition();
@@ -41,7 +41,7 @@ void Ennemy::mouvement() {
 }
 
 
-void Ennemy::MyUpdate() {
+void Zombies::MyUpdate() {
 }
 
 

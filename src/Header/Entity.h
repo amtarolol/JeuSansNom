@@ -16,10 +16,13 @@ public:
     virtual void MyUpdate();
 
     virtual float getPv();
+    virtual float getPvMax();
+    virtual void takeDamage(float damage);
 
 protected:
     float pv = 1.f;
     float vitesse = 1.f;
+    float pvMax = 1.f;
 
 };
 

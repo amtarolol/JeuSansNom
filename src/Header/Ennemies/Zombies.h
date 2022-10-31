@@ -3,16 +3,16 @@
 //
 
 #include "SFML/Graphics.hpp"
-#include "Entity.h"
+#include "../Entity.h"
 #pragma once
 
 
-class Ennemy : public Entity{
+class Zombies : public Entity{
 
 
 public:
-    Ennemy(sf::Vector2f position, std::shared_ptr<Entity> target);
-    ~Ennemy();
+    Zombies(sf::Vector2f position, std::shared_ptr<Entity> target);
+    ~Zombies() override;
 
     void mouvement() override;
     void MyUpdate() override;
@@ -23,6 +23,7 @@ private:
 
     std::shared_ptr<Entity> target;
     float giveDamage = 10.f;
+    float taille = 5.f;
 
 
 };
