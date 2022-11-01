@@ -38,21 +38,21 @@ private:
     void initWindow();
     void initGui();
     void initSystemEnnemy();
+    void initPlayer();
+    void initSystemProj();
 
 
     void getScreenSize();
 
 
 
-    std::unique_ptr<sf::RenderWindow> window;
+    std::shared_ptr<sf::RenderWindow> window;
     std::shared_ptr<GUI> gui;
     std::shared_ptr<SystemProjectiles> systemProj;
     std::shared_ptr<Player> player;
     std::shared_ptr<SystemEnnemy> systemEnnemy;
 
     std::unique_ptr<sf::RectangleShape> spawn; // inutile, juste là pour avoir une référence
-
-    std::vector<std::unique_ptr<Entity>> entites;
 
 
     unsigned int width = 0;

@@ -7,20 +7,25 @@
 #pragma once
 
 
-class Projectiles{
+class Projectiles : public sf::CircleShape{
 
 public:
     Projectiles(sf::Vector2f origine, sf::Vector2f mouseLocation, float lifeTime);
-    ~Projectiles();
+    ~Projectiles() override;
 
-    int mouvement(float clock);
-    sf::CircleShape getProjectile() const;
+    void MyUpdate();
+    bool isToDestroy() const;
+    void destroy();
 
 
 private:
+
+    int mouvement();
+
     sf::Vector2f velocity;
     float accel = 300.f;
     float lifetime;
-    sf::CircleShape proj;
+
+    bool toDestroy = false;
 };
 

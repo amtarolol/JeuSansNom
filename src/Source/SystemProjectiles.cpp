@@ -14,20 +14,19 @@ void SystemProjectiles::setLimite(int nouvLimite) {
 }
 
 
-void SystemProjectiles::update(float clock) {
+void SystemProjectiles::MyUpdate() {
+
     for (int i = 0; i < projectiles.size(); ++i)
     {
-        Projectiles& p = projectiles[i];
-        if (p.mouvement(clock) != 0){
+        projectiles[i]->MyUpdate();
+        if (projectiles[i]->isToDestroy()){
             projectiles.erase(projectiles.begin()+i);
         }
     }
-
 }
 
-
 void SystemProjectiles::addProjectile(sf::Vector2f origine, sf::Vector2f mouseLocation) {
-    projectiles.push_back(Projectiles(origine, mouseLocation, 3.f));
+    projectiles.push_back(std::make_unique<Projectiles>(origine, mouseLocation, 3.f));
 }
 
 void SystemProjectiles::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -36,18 +35,16 @@ void SystemProjectiles::draw(sf::RenderTarget &target, sf::RenderStates states) 
     states.texture = NULL;
 
     // draw the vertex array
-    for (int i = 0; i!= projectiles.size(); ++i){
-        target.draw(projectiles[i].getProjectile(), states);
+    for (const auto & projectile : projectiles){
+        target.draw(*projectile, states);
     }
 }
 
-std::vector<Projectiles> SystemProjectiles::getProjectiles() {
-    return projectiles;
+std::vector<std::unique_ptr<Projectiles>>* SystemProjectiles::getProjectiles() {
+    return &projectiles;
 }
 
-SystemProjectiles::~SystemProjectiles() {
-
-}
+SystemProjectiles::~SystemProjectiles() = default;
 
 
 

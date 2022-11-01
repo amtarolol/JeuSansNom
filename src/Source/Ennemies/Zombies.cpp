@@ -9,8 +9,12 @@
 
 Zombies::Zombies(sf::Vector2f position, std::shared_ptr<Entity> target){
 
-    pv = 100.f;
+    // variables de la classe Entity
+    pv = 30.f;
     vitesse = 1.5f;
+    giveDamage = 10;
+
+    //
 
     setSize(sf::Vector2f(taille, taille));
     setFillColor(sf::Color::Yellow);
@@ -42,6 +46,10 @@ void Zombies::mouvement() {
 
 
 void Zombies::MyUpdate() {
+
+    mouvement();
+
+
 }
 
 

@@ -16,14 +16,14 @@ public:
     ~SystemProjectiles() override;
 
     void setLimite(int nouvLimite);
-    void update(float clock);
+    void MyUpdate();
     void addProjectile(sf::Vector2f origine, sf::Vector2f mouseLocation);
-    std::vector<Projectiles> getProjectiles();
+    std::vector<std::unique_ptr<Projectiles>>* getProjectiles();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 
 private:
 
-    std::vector<Projectiles> projectiles;
+    std::vector<std::unique_ptr<Projectiles>> projectiles;
     int limite = 5;
 };

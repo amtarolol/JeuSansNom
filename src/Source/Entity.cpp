@@ -25,5 +25,9 @@ void Entity::takeDamage(float damage) {
     pv -= damage;
 }
 
+float Entity::getGiveDamage() {
+    return giveDamage;
+}
+
 
 

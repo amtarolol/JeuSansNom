@@ -7,7 +7,7 @@
 #include "../Header/Player.h"
 
 
-Player::Player(sf::Vector2f position) {
+Player::Player(sf::Vector2f position, std::shared_ptr<SystemProjectiles> systemProjectiles, std::shared_ptr<sf::RenderWindow> window) {
 
     // variables protected de la classe Entity
     pv = 100.f;
@@ -15,11 +15,13 @@ Player::Player(sf::Vector2f position) {
     pvMax = 100.f;
     //
 
-
     setSize(sf::Vector2f(10.f, 10.f));
     setFillColor(sf::Color::Green);
     setOrigin(getSize().x/2, getSize().y/2);
     setPosition(position);
+
+    systemProj = systemProjectiles;
+    this->window = window;
 }
 
 
@@ -27,12 +29,16 @@ Player::~Player() = default;
 
 
 void Player::MyUpdate() {
-    //mouvement();
+    mouvement();
 
 }
 
 
-void Player::mouvement(sf::Vector2f mouse) {
+void Player::mouvement() {
+
+    sf::Vector2i pixel = sf::Mouse::getPosition(*window);
+    sf::Vector2f mouse(window->mapPixelToCoords(pixel));
+
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
         move(-vitesse, 0.f);
@@ -56,14 +62,10 @@ void Player::mouvement(sf::Vector2f mouse) {
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        system->addProjectile(getPosition(), mouse);
+        systemProj->addProjectile(getPosition(), mouse);
     }
 }
 
-
-void Player::setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem) {
-    system = nouvSystem;
-}
 
 
 

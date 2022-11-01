@@ -5,6 +5,7 @@
 #include <memory>
 #include "Player.h"
 #include "SystemProjectiles.h"
+#include "SystemEnnemy.h"
 
 #pragma once
 
@@ -12,7 +13,7 @@
 class SystemCollision : public sf::Drawable {
 
 public:
-    SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemProjectiles> systemProj);
+    SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemProjectiles> systemProj, std::shared_ptr<SystemEnnemy> systemEnnemy);
     ~SystemCollision() override;
     void MyUpdate();
 
@@ -26,7 +27,7 @@ private:
 
     std::shared_ptr<Player> player;
     std::shared_ptr<SystemProjectiles> systemProj;
-    //std::shared_ptr<SystemEnnemy> systemEnnemy;
+    std::shared_ptr<SystemEnnemy> systemEnnemy;
 
 
 };

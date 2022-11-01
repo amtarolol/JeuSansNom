@@ -18,7 +18,7 @@ SystemEnnemy::SystemEnnemy(std::shared_ptr<Player> player, std::shared_ptr<GUI> 
 void SystemEnnemy::MyUpdate() {
 
     for (auto & entite : ennemies){
-        entite->mouvement();
+        entite->MyUpdate();
     }
 
 }
@@ -66,9 +66,6 @@ void SystemEnnemy::generatorEnnemy() {
     ennemies.push_back(std::make_unique<Zombies>(coord, player));
 
 }
-
-
-
 
 
 

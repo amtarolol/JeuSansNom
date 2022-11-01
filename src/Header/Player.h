@@ -12,16 +12,18 @@
 class Player : public Entity{
 
 public:
-    Player(sf::Vector2f position);
+    Player(sf::Vector2f position, std::shared_ptr<SystemProjectiles> systemProjectiles, std::shared_ptr<sf::RenderWindow> window);
     ~Player() override;
-    void mouvement(sf::Vector2f mouse);
 
     void MyUpdate() override;
-    void setSystemProjectile(std::shared_ptr<SystemProjectiles> nouvSystem);
 
 
 private:
-    std::shared_ptr<SystemProjectiles> system;
+
+    void mouvement() override;
+
+    std::shared_ptr<SystemProjectiles> systemProj;
+    std::shared_ptr<sf::RenderWindow> window;
 
 };
 
