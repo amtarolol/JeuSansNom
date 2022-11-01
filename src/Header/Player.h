@@ -16,6 +16,8 @@ public:
     ~Player() override;
 
     void MyUpdate() override;
+    void incrementKills();
+    int getKills() const;
 
 
 private:
@@ -24,6 +26,9 @@ private:
 
     std::shared_ptr<SystemProjectiles> systemProj;
     std::shared_ptr<sf::RenderWindow> window;
+
+    int kills = 0;
+
 
 };
 

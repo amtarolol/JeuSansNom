@@ -45,6 +45,12 @@ void Game::initSystemProj() {
 }
 
 
+void Game::initSystemColli() {
+
+    systemCollision = std::make_unique<SystemCollision>(player, systemProj, systemEnnemy);
+}
+
+
 
 void Game::getScreenSize() {
 
@@ -80,27 +86,13 @@ Game::Game() {
     // intialisation du système pour les ennemis, besoin joueur et gui
     initSystemEnnemy();
 
+    // initialisation du système pour les collisions, besoin joueur, systemEnnemi et systemProj
+    initSystemColli();
 }
 
 Game::~Game() = default;
 
 
-
-int Game::jouer() {
-
-    window->setView(*gui);
-
-    // main loop
-    while (window->isOpen()) {
-        // update the game
-        update();
-
-        // show the actual game
-        show();
-        compteurfps++;
-    }
-    return 0;
-}
 
 
 void Game::events() {
@@ -116,6 +108,12 @@ void Game::update() {
 
     events();
 
+
+    if (player->getPv() <= 0){
+        window->close();
+        std::cout << "perdu !";
+    }
+
     player->MyUpdate();
     systemProj->MyUpdate();
 
@@ -126,13 +124,39 @@ void Game::update() {
     //
 
     systemEnnemy->MyUpdate();
+    systemCollision->MyUpdate();
     gui->MyUpdate();
     window->setView(*gui);
 }
 
-void Game::show() {
+void Game::show(){
 
     window->clear();
+
+
+
+    // text pour les kills
+    sf::Font font;
+    if (!font.loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    {
+        std::error_code();
+    }
+
+    sf::Text kills;
+    kills.setFont(font);
+
+    std::string text = "Kills : " + std::to_string(player->getKills());
+    kills.setString(text);
+
+    kills.setCharacterSize(20);
+    kills.setStyle(sf::Text::Regular);
+
+    sf::Vector2f textScale(kills.getScale());
+    kills.setOrigin(textScale.x / 2, textScale.y / 2);
+
+    sf::Vector2f textPos(gui->getPvBarreRestant().getPosition());
+    textPos.x += 20; textPos.y -= 20;
+    kills.setPosition(textPos);
 
     window->draw(*spawn); // juste une référence pour savoir le spawn (centre de la map)
 
@@ -142,15 +166,37 @@ void Game::show() {
     window->draw(*player);
     window->draw(*gui);
 
+    window->draw(*gui);
+    window->draw(kills);
 
     window->display();
+
 }
+
+
+int Game::jouer() {
+
+    window->setView(*gui);
+
+    // main loop
+    while (window->isOpen()) {
+        // update the game
+        update();
+
+        // affichage
+        show();
+        compteurfps++;
+    }
+    return 0;
+}
+
 
 
 void Game::setLimiteProj(int nouvLimite){
 
 
 }
+
 
 
 

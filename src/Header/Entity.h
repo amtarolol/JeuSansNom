@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <mutex>
 
 #pragma once
 
@@ -30,6 +31,7 @@ protected:
     float giveDamage = 1.f; // uniquement pour les monstres, dégàts donnés au joueur
 
     float cooldownDamage = 1.f; // pour éviter que les monstres one-shot le joueur
+    float actualCooldown = 0.f;
 
 };
 

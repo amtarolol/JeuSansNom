@@ -17,10 +17,14 @@ SystemEnnemy::SystemEnnemy(std::shared_ptr<Player> player, std::shared_ptr<GUI> 
 
 void SystemEnnemy::MyUpdate() {
 
-    for (auto & entite : ennemies){
-        entite->MyUpdate();
+    for (int i = 0; i < ennemies.size(); ++i)
+    {
+        ennemies[i]->MyUpdate();
+        if (ennemies[i]->getPv() <= 0){
+            ennemies.erase(ennemies.begin()+i);
+            player->incrementKills();
+        }
     }
-
 }
 
 void SystemEnnemy::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -28,7 +32,6 @@ void SystemEnnemy::draw(sf::RenderTarget &target, sf::RenderStates states) const
     for (auto & entite : ennemies){
         target.draw(*entite);
     }
-
 }
 
 std::vector<std::unique_ptr<Zombies>>* SystemEnnemy::getEnnemies() {

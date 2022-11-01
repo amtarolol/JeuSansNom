@@ -47,9 +47,23 @@ void Zombies::mouvement() {
 
 void Zombies::MyUpdate() {
 
+    float fps = 1.f / 60.f;
+
+    if (actualCooldown > 0){
+        actualCooldown -= fps;
+    }
+
     mouvement();
 
+}
 
+void Zombies::cooldown() {
+    actualCooldown = cooldownDamage;
+}
+
+
+float Zombies::getCooldown() {
+    return actualCooldown;
 }
 
 

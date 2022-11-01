@@ -8,6 +8,7 @@
 #include "Ennemies/Zombies.h"
 #include "SystemProjectiles.h"
 #include "SystemEnnemy.h"
+#include "SystemCollision.h"
 #include "GUI.h"
 
 
@@ -15,6 +16,8 @@
 #include <iostream>
 #include <memory>
 #include "X11/Xlib.h"
+#include <thread>
+#include <mutex>
 
 #pragma once
 
@@ -40,6 +43,7 @@ private:
     void initSystemEnnemy();
     void initPlayer();
     void initSystemProj();
+    void initSystemColli();
 
 
     void getScreenSize();
@@ -51,6 +55,7 @@ private:
     std::shared_ptr<SystemProjectiles> systemProj;
     std::shared_ptr<Player> player;
     std::shared_ptr<SystemEnnemy> systemEnnemy;
+    std::unique_ptr<SystemCollision> systemCollision;
 
     std::unique_ptr<sf::RectangleShape> spawn; // inutile, juste là pour avoir une référence
 

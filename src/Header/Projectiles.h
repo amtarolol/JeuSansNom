@@ -16,6 +16,7 @@ public:
     void MyUpdate();
     bool isToDestroy() const;
     void destroy();
+    float getDamage();
 
 
 private:
@@ -26,6 +27,7 @@ private:
     float accel = 300.f;
     float lifetime;
 
+    float damage = 5.f;
     bool toDestroy = false;
 };
 

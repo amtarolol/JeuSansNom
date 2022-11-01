@@ -36,6 +36,7 @@ void Player::MyUpdate() {
 
 void Player::mouvement() {
 
+
     sf::Vector2i pixel = sf::Mouse::getPosition(*window);
     sf::Vector2f mouse(window->mapPixelToCoords(pixel));
 
@@ -63,7 +64,16 @@ void Player::mouvement() {
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
         systemProj->addProjectile(getPosition(), mouse);
+
     }
+}
+
+int Player::getKills() const {
+    return kills;
+}
+
+void Player::incrementKills() {
+    kills++;
 }
 
 

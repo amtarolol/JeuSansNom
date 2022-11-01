@@ -53,6 +53,10 @@ void Projectiles::destroy() {
     toDestroy = true;
 }
 
+float Projectiles::getDamage() {
+    return damage;
+}
+
 
 Projectiles::~Projectiles() = default;
 

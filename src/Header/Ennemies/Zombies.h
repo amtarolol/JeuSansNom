@@ -17,7 +17,10 @@ public:
     void mouvement() override;
     void MyUpdate() override;
 
+    void cooldown();
     void setTarget(std::shared_ptr<Entity> nouvTarget);
+
+    float getCooldown();
 
 private:
 

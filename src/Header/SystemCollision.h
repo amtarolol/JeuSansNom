@@ -10,14 +10,13 @@
 #pragma once
 
 
-class SystemCollision : public sf::Drawable {
+class SystemCollision {
 
 public:
     SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemProjectiles> systemProj, std::shared_ptr<SystemEnnemy> systemEnnemy);
-    ~SystemCollision() override;
+    ~SystemCollision();
     void MyUpdate();
 
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 private:
 

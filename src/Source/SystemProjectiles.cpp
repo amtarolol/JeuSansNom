@@ -16,6 +16,7 @@ void SystemProjectiles::setLimite(int nouvLimite) {
 
 void SystemProjectiles::MyUpdate() {
 
+
     for (int i = 0; i < projectiles.size(); ++i)
     {
         projectiles[i]->MyUpdate();
@@ -23,18 +24,20 @@ void SystemProjectiles::MyUpdate() {
             projectiles.erase(projectiles.begin()+i);
         }
     }
+
 }
 
 void SystemProjectiles::addProjectile(sf::Vector2f origine, sf::Vector2f mouseLocation) {
+
     projectiles.push_back(std::make_unique<Projectiles>(origine, mouseLocation, 3.f));
+
 }
 
-void SystemProjectiles::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+void SystemProjectiles::draw(sf::RenderTarget &target, sf::RenderStates states) const{
 
-    // our particles don't use a texture
+    // pas de texture pour nos projectiles (possibles changements)
     states.texture = NULL;
 
-    // draw the vertex array
     for (const auto & projectile : projectiles){
         target.draw(*projectile, states);
     }

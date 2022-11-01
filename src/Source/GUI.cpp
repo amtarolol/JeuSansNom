@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "../Header/GUI.h"
+#include <mutex>
 
 
 GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height) {
@@ -59,11 +60,35 @@ void GUI::prepareGUI() {
 
 
     pvBarreMax.setOutlineThickness(3.f);
-    // - gold color pour le contour
+    // - vers foncé pour le contour
     sf::Color color(0,128,0, 75);
     pvBarreMax.setOutlineColor(color);
-
     // fin barre des pv du joueur
+
+
+
+    // text pour les kills
+    /*sf::Font font;
+    if (!font.loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    {
+        std::cout << "non";
+    }
+
+    kills->setFont(font);
+
+    std::string text = "Kills : " + std::to_string(player->getKills());
+    kills->setString(text);
+
+    kills->setCharacterSize(20);
+    kills->setStyle(sf::Text::Regular);
+
+    sf::Vector2f textScale(kills->getScale());
+    kills->setOrigin(textScale.x / 2, textScale.y / 2);
+
+
+    sf::Vector2f textPos(pvBarreRestant.getPosition());
+    textPos.x += widthBarre;
+    kills->setPosition(textPos);*/
 
 
 }
@@ -71,8 +96,14 @@ void GUI::prepareGUI() {
 void GUI::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     states.texture = NULL;
+
     target.draw(pvBarreMax);
     target.draw(pvBarreRestant);
+    //target.draw(*kills);
+}
+
+sf::RectangleShape GUI::getPvBarreRestant() {
+    return pvBarreRestant;
 }
 
 

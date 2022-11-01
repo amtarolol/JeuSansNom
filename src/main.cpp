@@ -11,6 +11,18 @@ int main()
     sf::Vector2f origin(500/2, 300/2);
 
 
+    sf::Font font;
+    if (!font.loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf")){
+        return 1;
+    }
+
+    sf::Text text;
+    text.setFont(font);
+
+    text.setString("test");
+
+
+
     sf::Vertex point = sf::Vertex(sf::Vector2f(500/2,300/2));
     sf::Vector2f mouse = sf::Vector2f (1,1);
 
@@ -46,9 +58,11 @@ int main()
 
         window.clear();
 
+        window.draw(text);
+
         //draw
         //window.draw(line, 2, sf::Lines);
-        window.draw(&point, 1, sf::Points);
+        //window.draw(&point, 1, sf::Points);
 
         window.display();
     }
