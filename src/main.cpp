@@ -1,6 +1,5 @@
 #include <ctgmath>
 #include "Header/Game.h"
-#include "SFML/Graphics.hpp"
 
 int main()
 {
