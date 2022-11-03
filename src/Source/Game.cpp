@@ -159,8 +159,6 @@ void Game::show(){
 
 int Game::jouer() {
 
-    window->setView(*gui);
-
     // main loop
     while (window->isOpen()) {
         // update the game
