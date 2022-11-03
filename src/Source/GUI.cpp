@@ -7,14 +7,16 @@
 #include <mutex>
 
 
-GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height) {
+GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height, std::shared_ptr<sf::Font> style) {
 
     this->player = player;
     this->width = width;
     this->height = height;
 
+    font = style;
+
     // taille de notre view pour avoir la fen^tre et faire le gui en conséquence
-    setSize(width/2, height/2);
+    setSize(this->width/2, this->height/2);
     setCenter(player->getPosition());
 
 
@@ -68,27 +70,25 @@ void GUI::prepareGUI() {
 
 
     // text pour les kills
-    /*sf::Font font;
-    if (!font.loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
-    {
-        std::cout << "non";
-    }
 
-    kills->setFont(font);
+    kills.setFont(*font);
 
     std::string text = "Kills : " + std::to_string(player->getKills());
-    kills->setString(text);
+    kills.setString(text);
 
-    kills->setCharacterSize(20);
-    kills->setStyle(sf::Text::Regular);
+    kills.setCharacterSize(20);
+    kills.setStyle(sf::Text::Regular);
 
-    sf::Vector2f textScale(kills->getScale());
-    kills->setOrigin(textScale.x / 2, textScale.y / 2);
+
+    sf::Vector2f textScale(kills.getScale());
+    sf::FloatRect killsBox = kills.getLocalBounds();
+    kills.setOrigin(killsBox.width /2 , killsBox.height/2);
 
 
     sf::Vector2f textPos(pvBarreRestant.getPosition());
-    textPos.x += widthBarre;
-    kills->setPosition(textPos);*/
+    textPos.x += widthBarre/3 * 2;
+    textPos.y -= heightBarre/2;
+    kills.setPosition(textPos);
 
 
 }
@@ -99,7 +99,7 @@ void GUI::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     target.draw(pvBarreMax);
     target.draw(pvBarreRestant);
-    //target.draw(*kills);
+    target.draw(kills);
 }
 
 sf::RectangleShape GUI::getPvBarreRestant() {

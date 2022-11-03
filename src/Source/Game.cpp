@@ -11,6 +11,14 @@ void Game::initVariable() {
     spawn->setPosition(width/2, height/2);
     //
 
+    // style d'écriture pour les textes
+    font = std::make_shared<sf::Font>();
+    if (!font->loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    {
+        std::cout << "erreur lors récupération font";
+    }
+    //
+
 }
 
 
@@ -29,7 +37,7 @@ void Game::initWindow() {
 
 void Game::initGui() {
 
-    gui = std::make_shared<GUI>(player, width, height);
+    gui = std::make_shared<GUI>(player, width, height, font);
 }
 
 
@@ -80,7 +88,7 @@ Game::Game() {
     // initialisation du joueur, besoin window, taille écran et systemProj
     initPlayer();
 
-    // initialisation du gui pour l'affichage des informations en jeu, besoin taille écran et joueur
+    // initialisation du gui pour l'affichage des informations en jeu, besoin taille écran, joueur et font
     initGui();
 
     // intialisation du système pour les ennemis, besoin joueur et gui
@@ -134,30 +142,6 @@ void Game::show(){
     window->clear();
 
 
-
-    // text pour les kills
-    sf::Font font;
-    if (!font.loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
-    {
-        std::error_code();
-    }
-
-    sf::Text kills;
-    kills.setFont(font);
-
-    std::string text = "Kills : " + std::to_string(player->getKills());
-    kills.setString(text);
-
-    kills.setCharacterSize(20);
-    kills.setStyle(sf::Text::Regular);
-
-    sf::Vector2f textScale(kills.getScale());
-    kills.setOrigin(textScale.x / 2, textScale.y / 2);
-
-    sf::Vector2f textPos(gui->getPvBarreRestant().getPosition());
-    textPos.x += 20; textPos.y -= 20;
-    kills.setPosition(textPos);
-
     window->draw(*spawn); // juste une référence pour savoir le spawn (centre de la map)
 
 
@@ -167,7 +151,6 @@ void Game::show(){
     window->draw(*gui);
 
     window->draw(*gui);
-    window->draw(kills);
 
     window->display();
 

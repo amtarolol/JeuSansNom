@@ -57,6 +57,8 @@ private:
     std::shared_ptr<SystemEnnemy> systemEnnemy;
     std::unique_ptr<SystemCollision> systemCollision;
 
+    std::shared_ptr<sf::Font> font;
+
     std::unique_ptr<sf::RectangleShape> spawn; // inutile, juste là pour avoir une référence
 
 
