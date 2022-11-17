@@ -4,7 +4,7 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include "Player.h"
-#include "SystemProjectiles.h"
+#include "ArmementJoueur.h"
 #include "SystemEnnemy.h"
 
 #pragma once
@@ -13,7 +13,7 @@
 class SystemCollision {
 
 public:
-    SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemProjectiles> systemProj, std::shared_ptr<SystemEnnemy> systemEnnemy);
+    SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemEnnemy> systemEnnemy);
     ~SystemCollision();
     void MyUpdate();
 
@@ -25,7 +25,7 @@ private:
 
 
     std::shared_ptr<Player> player;
-    std::shared_ptr<SystemProjectiles> systemProj;
+    std::shared_ptr<ArmementJoueur> systemProj;
     std::shared_ptr<SystemEnnemy> systemEnnemy;
 
 

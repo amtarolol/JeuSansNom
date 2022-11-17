@@ -30,7 +30,7 @@ void SystemEnnemy::MyUpdate() {
 void SystemEnnemy::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     for (auto & entite : ennemies){
-        target.draw(*entite);
+        target.draw(*entite->getEntity());
     }
 }
 

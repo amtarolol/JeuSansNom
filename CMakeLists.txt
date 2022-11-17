@@ -7,7 +7,7 @@ add_executable(C__ src/main.cpp
         src/Source/Player.cpp
         src/Header/Player.h
         src/Source/Entity.cpp
-        src/Header/Entity.h src/Source/Game.cpp src/Header/Game.h src/Source/Projectiles.cpp src/Header/Projectiles.h src/Source/SystemProjectiles.cpp src/Header/SystemProjectiles.h src/Source/Ennemies/Zombies.cpp src/Header/Ennemies/Zombies.h src/Source/GUI.cpp src/Header/GUI.h src/Source/SystemCollision.cpp src/Header/SystemCollision.h src/Source/SystemEnnemy.cpp src/Header/SystemEnnemy.h)
+        src/Header/Entity.h src/Source/Game.cpp src/Header/Game.h src/Source/weapons/Projectiles.cpp src/Header/weapons/Projectiles.h src/Source/ArmementJoueur.cpp src/Header/ArmementJoueur.h src/Source/Ennemies/Zombies.cpp src/Header/Ennemies/Zombies.h src/Source/GUI.cpp src/Header/GUI.h src/Source/SystemCollision.cpp src/Header/SystemCollision.h src/Source/SystemEnnemy.cpp src/Header/SystemEnnemy.h)
 
 
 set(SFML_DIR "/home/amtarolol/Bureau/SFML-2.5.1/lib/cmake/SFML")

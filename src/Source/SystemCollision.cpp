@@ -5,10 +5,10 @@
 #include <iostream>
 #include "../Header/SystemCollision.h"
 
-SystemCollision::SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemProjectiles> systemProj, std::shared_ptr<SystemEnnemy> systemEnnemy) {
+SystemCollision::SystemCollision(std::shared_ptr<Player> player, std::shared_ptr<SystemEnnemy> systemEnnemy) {
 
     this->player = player;
-    this->systemProj = systemProj;
+    this->systemProj = player->getArmement();
     this->systemEnnemy = systemEnnemy;
 }
 
@@ -23,10 +23,10 @@ void SystemCollision::MyUpdate() {
 
 void SystemCollision::collisionAvecPlayer() {
 
-    sf::FloatRect PlayerBox = player->getGlobalBounds();
+    sf::FloatRect PlayerBox = player->getEntity()->getGlobalBounds();
 
     for (auto & creature : *systemEnnemy->getEnnemies()){
-        sf::FloatRect creatureBox = creature->getGlobalBounds();
+        sf::FloatRect creatureBox = creature->getEntity()->getGlobalBounds();
 
         if (PlayerBox.intersects(creatureBox) && creature->getCooldown() <= 0) {
             player->takeDamage(creature->getGiveDamage());
@@ -44,7 +44,7 @@ void SystemCollision::collisionProjectiles() {
 
         for (auto & creature : *systemEnnemy->getEnnemies()){
 
-            sf::FloatRect creatureBox = creature->getGlobalBounds();
+            sf::FloatRect creatureBox = creature->getEntity()->getGlobalBounds();
 
             if (projBox.intersects(creatureBox)){
                 creature->takeDamage(proj->getDamage());

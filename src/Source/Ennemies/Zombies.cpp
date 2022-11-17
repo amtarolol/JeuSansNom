@@ -11,15 +11,17 @@ Zombies::Zombies(sf::Vector2f position, std::shared_ptr<Entity> target){
 
     // variables de la classe Entity
     pv = 30.f;
-    vitesse = 1.5f;
+    vitesse = 2.f;
     giveDamage = 10;
 
+    sf::Vector2f size(taille,taille);
+    entity = std::make_shared<sf::RectangleShape>(size);
     //
 
-    setSize(sf::Vector2f(taille, taille));
-    setFillColor(sf::Color::Yellow);
-    setOrigin(getSize().x/2, getSize().y/2);
-    setPosition(position);
+
+    entity->setFillColor(sf::Color::Yellow);
+    entity->setOrigin(size.x/2, size.y/2);
+    entity->setPosition(position);
 
     setTarget(target); // cible du zombie où il va aller
 
@@ -35,13 +37,13 @@ void Zombies::setTarget(std::shared_ptr<Entity> nouvTarget) {
 
 void Zombies::mouvement() {
 
-    sf::Vector2f targetPos = target->getPosition();
-    sf::Vector2f myPos = getPosition();
+    sf::Vector2f targetPos = target->getEntity()->getPosition();
+    sf::Vector2f myPos = entity->getPosition();
     sf::Vector2f distance(targetPos.x - myPos.x, targetPos.y - myPos.y);
     float norme = std::sqrt(distance.x * distance.x + distance.y * distance.y);
     sf::Vector2f direction(distance/norme);
 
-    move(direction * vitesse);
+    entity->move(direction * vitesse);
 }
 
 
@@ -52,7 +54,6 @@ void Zombies::MyUpdate() {
     if (actualCooldown > 0){
         actualCooldown -= fps;
     }
-
     mouvement();
 
 }

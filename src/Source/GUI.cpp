@@ -7,17 +7,21 @@
 #include <mutex>
 
 
-GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height, std::shared_ptr<sf::Font> style) {
+GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height) {
 
     this->player = player;
     this->width = width;
     this->height = height;
 
-    font = style;
+    font = std::make_shared<sf::Font>();
+    if (!font->loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    {
+        std::cout << "erreur lors récupération font";
+    }
 
     // taille de notre view pour avoir la fen^tre et faire le gui en conséquence
     setSize(this->width/2, this->height/2);
-    setCenter(player->getPosition());
+    setCenter(player->getEntity()->getPosition());
 
 
     prepareGUI();
@@ -27,7 +31,7 @@ GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height
 
 void GUI::MyUpdate() {
 
-    sf::Vector2f playerPos(player->getPosition());
+    sf::Vector2f playerPos(player->getEntity()->getPosition());
     setCenter(playerPos);
 
     prepareGUI();
@@ -79,8 +83,6 @@ void GUI::prepareGUI() {
     kills.setCharacterSize(20);
     kills.setStyle(sf::Text::Regular);
 
-
-    sf::Vector2f textScale(kills.getScale());
     sf::FloatRect killsBox = kills.getLocalBounds();
     kills.setOrigin(killsBox.width /2 , killsBox.height/2);
 

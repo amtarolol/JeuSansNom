@@ -9,7 +9,7 @@
 #pragma once
 
 
-class Entity : public sf::RectangleShape {
+class Entity : public sf::Drawable {
 
 public:
 
@@ -19,6 +19,12 @@ public:
     virtual float getPvMax();
     virtual float getGiveDamage();
     virtual void takeDamage(float damage);
+
+
+    std::shared_ptr<sf::Shape> getEntity();
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+
 
 protected:
 
@@ -32,6 +38,9 @@ protected:
 
     float cooldownDamage = 1.f; // pour éviter que les monstres one-shot le joueur
     float actualCooldown = 0.f;
+
+
+    std::shared_ptr<sf::Shape> entity;
 
 };
 

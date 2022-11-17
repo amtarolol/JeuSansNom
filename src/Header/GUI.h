@@ -5,14 +5,13 @@
 #include "SFML/Graphics.hpp"
 #include "Player.h"
 
-
 #include <memory>
 #pragma once
 
 class GUI : public sf::View, public sf::Drawable {
 
 public:
-    GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height, std::shared_ptr<sf::Font> style);
+    GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height);
     ~GUI() override;
     void MyUpdate();
     void prepareGUI();

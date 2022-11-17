@@ -7,20 +7,25 @@
 #include "../Header/Player.h"
 
 
-Player::Player(sf::Vector2f position, std::shared_ptr<SystemProjectiles> systemProjectiles, std::shared_ptr<sf::RenderWindow> window) {
+Player::Player(sf::Vector2f position, std::shared_ptr<sf::RenderWindow> window) {
 
     // variables protected de la classe Entity
     pv = 100.f;
     vitesse = 2.f;
     pvMax = 100.f;
+
+    sf::Vector2f size(taille, taille);
+
+    entity = std::make_shared<sf::RectangleShape>(size);
     //
 
-    setSize(sf::Vector2f(10.f, 10.f));
-    setFillColor(sf::Color::Green);
-    setOrigin(getSize().x/2, getSize().y/2);
-    setPosition(position);
 
-    systemProj = systemProjectiles;
+    entity->setFillColor(sf::Color::Green);
+    entity->setOrigin(size.x/2, size.y/2);
+    entity->setPosition(position);
+
+    armementJoueur = std::make_shared<ArmementJoueur>();
+
     this->window = window;
 }
 
@@ -30,6 +35,8 @@ Player::~Player() = default;
 
 void Player::MyUpdate() {
     mouvement();
+
+    armementJoueur->MyUpdate();
 
 }
 
@@ -42,29 +49,23 @@ void Player::mouvement() {
 
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-        move(-vitesse, 0.f);
+        entity->move(-vitesse, 0.f);
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-        move(vitesse, 0.f);
+        entity->move(vitesse, 0.f);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-        move(0.f, -vitesse);
+        entity->move(0.f, -vitesse);
 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-        move(0.f, vitesse);
-    }
-
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-        rotate(30.f);
+        entity->move(0.f, vitesse);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        systemProj->addProjectile(getPosition(), mouse);
-
+        armementJoueur->addProjectile(entity->getPosition(), mouse);
     }
 }
 
@@ -75,6 +76,18 @@ int Player::getKills() const {
 void Player::incrementKills() {
     kills++;
 }
+
+
+void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    target.draw(*armementJoueur);
+    target.draw(*entity);
+}
+
+std::shared_ptr<ArmementJoueur> Player::getArmement() {
+    return armementJoueur;
+}
+
+
 
 
 

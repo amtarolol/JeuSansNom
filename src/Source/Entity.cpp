@@ -29,5 +29,12 @@ float Entity::getGiveDamage() {
     return giveDamage;
 }
 
+void Entity::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+}
+
+std::shared_ptr<sf::Shape> Entity::getEntity() {
+    return entity;
+}
+
 
 
