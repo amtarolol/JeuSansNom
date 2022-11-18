@@ -3,14 +3,9 @@
 //
 
 
-#include <iostream>
 #include "../Header/Entity.h"
 
 void Entity::mouvement() {
-}
-
-void Entity::MyUpdate() {
-
 }
 
 float Entity::getPv() {
@@ -29,12 +24,11 @@ float Entity::getGiveDamage() {
     return giveDamage;
 }
 
-void Entity::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-}
-
 std::shared_ptr<sf::Shape> Entity::getEntity() {
     return entity;
 }
 
-
+void Entity::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    target.draw(*entity);
+}
 

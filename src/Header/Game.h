@@ -2,14 +2,8 @@
 // Created by amtarolol on 24/10/22.
 //
 
-#include "SFML/Graphics.hpp"
-#include "Entity.h"
-#include "Player.h"
-#include "Ennemies/Zombies.h"
-#include "ArmementJoueur.h"
-#include "SystemEnnemy.h"
+#include "Component.h"
 #include "SystemCollision.h"
-#include "GUI.h"
 #include "SFML/Audio.hpp"
 
 

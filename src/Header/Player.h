@@ -7,7 +7,6 @@
 #include "ArmementJoueur.h"
 #include <memory>
 
-
 #pragma once
 
 class Player : public Entity{
@@ -19,6 +18,7 @@ public:
     void MyUpdate() override;
     void incrementKills();
     int getKills() const;
+
     std::shared_ptr<ArmementJoueur> getArmement();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

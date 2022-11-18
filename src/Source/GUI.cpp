@@ -21,7 +21,7 @@ GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height
 
     // taille de notre view pour avoir la fen^tre et faire le gui en conséquence
     setSize(this->width/2, this->height/2);
-    setCenter(player->getEntity()->getPosition());
+    setCenter(this->player->getEntity()->getPosition());
 
 
     prepareGUI();
@@ -99,6 +99,7 @@ void GUI::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     states.texture = NULL;
 
+    target.setView(*this);
     target.draw(pvBarreMax);
     target.draw(pvBarreRestant);
     target.draw(kills);

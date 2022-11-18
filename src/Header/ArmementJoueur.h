@@ -2,14 +2,14 @@
 // Created by amtarolol on 26/10/22.
 //
 
-#include "SFML/Graphics.hpp"
+#include "Component.h"
 #include "weapons/Projectiles.h"
 #include <mutex>
 
 #pragma once
 
 
-class ArmementJoueur : public sf::Drawable
+class ArmementJoueur : public Component
         {
 
 public:

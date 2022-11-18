@@ -2,7 +2,7 @@
 // Created by amtarolol on 31/10/22.
 //
 
-#include "SFML/Graphics.hpp"
+#include "Component.h"
 #include "Player.h"
 #include "GUI.h"
 #include "Ennemies/Zombies.h"
@@ -14,7 +14,7 @@
 
 #pragma once
 
-class SystemEnnemy : public sf::Drawable  {
+class SystemEnnemy : public Component  {
 
 public:
     SystemEnnemy(std::shared_ptr<Player> player, std::shared_ptr<GUI> gui);

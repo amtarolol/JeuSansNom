@@ -133,7 +133,9 @@ void Game::update() {
 
     if (player->getPv() <= 0){
         window->close();
-        std::cout << "perdu !";
+        std::cout << "perdu ! \nVous avez tuez " << player->getKills() << " Zombies !!";
+
+
     }
 
     player->MyUpdate();
@@ -152,12 +154,13 @@ void Game::update() {
     systemEnnemy->MyUpdate();
     systemCollision->MyUpdate();
     gui->MyUpdate();
-    window->setView(*gui);
 }
 
 void Game::show(){
 
     window->clear();
+
+    window->draw(*gui); // j'affiche et la fenetre sur focalise sur la view
 
 
     window->draw(*spawn); // juste une référence pour savoir le spawn (centre de la map)
@@ -166,9 +169,6 @@ void Game::show(){
 
     window->draw(*systemEnnemy);
     window->draw(*player);
-    //window->draw(*gui);
-
-    window->draw(*gui);
 
     window->display();
 

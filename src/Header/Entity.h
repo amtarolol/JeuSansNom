@@ -2,29 +2,26 @@
 // Created by amtarolol on 22/10/22.
 //
 
-#include <SFML/Graphics.hpp>
 #include <memory>
 #include <mutex>
+#include "Component.h"
 
 #pragma once
 
 
-class Entity : public sf::Drawable {
+class Entity : public Component {
 
 public:
-
-    virtual void MyUpdate();
 
     virtual float getPv();
     virtual float getPvMax();
     virtual float getGiveDamage();
     virtual void takeDamage(float damage);
 
-
-    std::shared_ptr<sf::Shape> getEntity();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 
+    std::shared_ptr<sf::Shape> getEntity();
 
 protected:
 
