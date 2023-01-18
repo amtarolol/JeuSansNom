@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="C__"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\rss\;CMake Files\rss\SFML-2.5.1\;CMake Files\rss\SFML-2.5.1\lib\;CMake Files\rss\SFML-2.5.1\lib\cmake\;CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="C__">
+				<Option output="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/C__" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 C__"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="C__/fast">
+				<Option output="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/C__" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 C__/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/amtarolol/Bureau/Compilation-jeu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/ArmementJoueur.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/Component.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/Ennemies/Zombies.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/Entity.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/GUI.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/Game.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/Player.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/SystemCollision.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/SystemEnnemy.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Header/weapons/Projectiles.h">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/ArmementJoueur.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/Component.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/Ennemies/Zombies.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/Entity.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/GUI.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/Game.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/Player.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/SystemCollision.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/SystemEnnemy.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/Source/weapons/Projectiles.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/src/main.cpp">
+			<Option target="C__"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/lib/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/lib/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/lib/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/lib/cmake/SFML/SFMLSharedTargets-release.cmake">
+			<Option virtualFolder="CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/amtarolol/Bureau/Compilation-jeu/rss/SFML-2.5.1/lib/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\rss\SFML-2.5.1\lib\cmake\SFML\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
