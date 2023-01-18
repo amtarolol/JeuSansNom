@@ -9,7 +9,7 @@ void Game::initVariable() {
 
     // style d'écriture pour les textes
     font = std::make_shared<sf::Font>();
-    if (!font->loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    if (!font->loadFromFile("rss/Fresco_Stamp.ttf"))
     {
         std::cout << "erreur lors récupération font";
     }
@@ -34,7 +34,7 @@ void Game::initVariable() {
     textSpawn->setPosition(spawnPos.x , spawnPos.y - killsBox.height/1.5f);
 
     // musique
-    music.openFromFile("/home/amtarolol/Bureau/C++/rss/The Toxic Avenger - My Only Chance (from Furi original soundtrack).wav");
+    music.openFromFile("rss/The Toxic Avenger - My Only Chance (from Furi original soundtrack).wav");
     music.setVolume(10.f);
     music.setLoop(true);
 

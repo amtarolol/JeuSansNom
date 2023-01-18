@@ -14,7 +14,7 @@ GUI::GUI(std::shared_ptr<Player> player, unsigned int width, unsigned int height
     this->height = height;
 
     font = std::make_shared<sf::Font>();
-    if (!font->loadFromFile("/home/amtarolol/Bureau/C++/rss/Fresco_Stamp.ttf"))
+    if (!font->loadFromFile("rss/Fresco_Stamp.ttf"))
     {
         std::cout << "erreur lors récupération font";
     }
