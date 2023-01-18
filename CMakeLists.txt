@@ -10,8 +10,8 @@ add_executable(C__ src/main.cpp
         src/Header/Entity.h src/Source/Game.cpp src/Header/Game.h src/Source/Projectiles.cpp src/Header/Projectiles.h src/Source/SystemProjectiles.cpp src/Header/SystemProjectiles.h src/Source/Ennemies/Zombies.cpp src/Header/Ennemies/Zombies.h src/Source/GUI.cpp src/Header/GUI.h src/Source/SystemCollision.cpp src/Header/SystemCollision.h src/Source/SystemEnnemy.cpp src/Header/SystemEnnemy.h)
 
 
-set(SFML_DIR "/home/amtarolol/Bureau/SFML-2.5.1/lib/cmake/SFML")
-find_package(SFML 2.5 COMPONENTS network audio graphics window system REQUIRED)
+set(SFML_DIR "rss/SFML-2.5.1/lib/cmake/SFML")
+find_package(SFML 2.5.1 COMPONENTS network audio graphics window system REQUIRED)
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     # SFML version >= 2.5
